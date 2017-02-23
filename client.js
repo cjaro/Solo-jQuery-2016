@@ -1,27 +1,43 @@
-// var randomColor;
-// var colorArray = ['red', 'yellow','green','blue'];
-
-var buttonClicked;
-var numberOfClicks;
+//jQuery code challenge attempt #2 Feb 23
+// deleted unecessary variable declarations
+// throughout, deleted extra logs
+// on line 19 fixed the way I was designating/identifying the color of the newly added block
+//this fixed errors I was having with colorless boxes being added
+// on line 21 fixed appending by giving div a class and appending to that new div
+// I didn't quite have the syntax right first time around
+// on line 22 I defined a variable to pick the right color
+// line 23 I made a way to change the number of blocks that had been added
+// increased the numberofBlocks every time another of like color was added
+// singled out the text in the body and their span ids/colors to change
+// moved all old comments down to the bottom of the document
+//thank you for giving me a second chance.
 
 $(document).ready(function(){
-  console.log('Ready to start, captain');
-
-  // for (var i = 0; i < colorArray.length; i++) {
-  //   colorArray[i]
-  // }
-
+  console.log('Ready to start');
 
   $('.color-button').on('click',function(){
-    var newColorBlock = $('<div style="color-cube">');
-    console.log($(this).attr('data-color') + ' was clicked!');  // attr() not data() logged a color instead of 'undefined'
-    newColorBlock.addClass('color-cube');
-    buttonClicked = $(this).data('data-color');
-    $('.container').append(newColorBlock);
-    
-    // $('div').append(this).data('data-color');
-    // console.log('divs are being added but I can not see them on the DOM');
-    console.log('divs are added but are colorless');
+    var newColorBlock = $(this).data().color;
+    console.log($(this).attr('data-color') + ' was clicked');
+    $('.container').append('<div class="color-cube' +newColorBlock+ '"></div>');
+      var pickColor = '#' + newColorBlock;
+      var numberofBlocks = $(pickColor).text();
+      numberofBlocks++;
+      $(pickColor).text(numberofBlocks);
+
+
+      });
+});
+
+
+
+
+
+
+
+
+
+
+
 
     // $('<p>').text(numberOfClicks); //get to span element with specific color ID
 
@@ -38,13 +54,13 @@ $(document).ready(function(){
     //   $('.container').append('<div style="color:blue"></div>');
     // }
 
-  });
+
 
   // $('#container').append(newColorBlock);
-  });
 
 
-  $('.container').append('<div style="color-cube"></div>');
+
+// $('.container').append('<div style="color-cube"></div>');
 
 
 
